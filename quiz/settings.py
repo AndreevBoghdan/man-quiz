@@ -56,7 +56,7 @@ ROOT_URLCONF = 'quiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'more_with_admin/templates'), os.path.join(BASE_DIR, 'more_with_admin/questions/templates')],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,5 +121,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR, 'assets'),
+)
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib import admin
 from models import Quiz, Question, Answer
 
@@ -19,8 +20,6 @@ class QuizAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Quiz, QuizAdmin)
-
-
 
 
 class QuestionAdmin(admin.ModelAdmin):
@@ -45,3 +44,6 @@ class AnswerAdmin(admin.ModelAdmin):
     list_display = ('answer', 'question', 'is_Correct')
 
 admin.site.register(Answer, AnswerAdmin)
+
+
+

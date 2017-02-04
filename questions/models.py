@@ -18,7 +18,7 @@ class Quiz(models.Model):
 class Question(models.Model):
     class Meta():
         db_table = 'question'
-    question = models.CharField(max_length=200)
+    question = models.TextField(max_length=200)
     count = models.IntegerField(default=0)
     quiz = models.ForeignKey(Quiz, related_name='quiz')
 
