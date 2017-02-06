@@ -10,5 +10,6 @@ def questions(request, quiz_pk):
         questions.append((question, question.answers.filter()))
 
     return render(request, 'questions/quiz.html',
-        {'questions':questions}
+        {'questions':questions,
+        'quiz':quiz}
         )

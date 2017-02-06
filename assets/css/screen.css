@@ -33,7 +33,11 @@ body{
 	padding-left: 55px;
 	padding-right: 55px;
 }
-
+#quiz-headline{
+	line-height: 60px;
+	font-size: 40px;
+	margin-bottom: 50px;	
+}
 .question-text{
 	line-height: 60px;
 	font-size: 40px;
@@ -68,8 +72,42 @@ a.button {
   line-height: 104px;
   float: left;
   margin-right: 15px;
+}
+
+a.navigation-button{
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  width:75px;
+  height: 45px;
+  transition: all .218s ease 0s;
+  vertical-align: center;
+  font-size: 40px;
+  line-height: 45px;
+  margin-right: 15px;
 
 }
+
+.back-button{
+	background-image: url(/static/img/back-button.png);
+    position: absolute;
+	bottom: 20px;
+	left: 55px;
+}
+
+.next-button{
+	background-image: url(/static/img/next-button.png);
+    position: absolute;
+	bottom: 20px;
+	right: 55px;
+}
+
+
 a.button:hover {
   box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }

@@ -7,6 +7,10 @@
 
 {% block extra_head %}
 
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery.form.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
 <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
 
 {% endblock extra_head %}
@@ -15,20 +19,55 @@
 <div id="wrap">
 	
 <div id="content">
+<h2 id="quiz-headline">{{ quiz.name }}</h2>
 {% for question, answers in questions %}
     {% if forloop.first %}
     <div id='question-{{ question.pk }}' class="question">
-	     <div class="question-text">{{question.question |linebreaks}}</div>
+	     <div class="question-text">{{question.question | linebreaks}}</div>
 
     <div class="answers">
     {% for answer in answers %}
         <a href="#" class="button"> {{ answer.answer}}</a>
     {% endfor %}
 
-    {% endif %}
     </div>
+    <a href="#" class="navigation-button back-button back-button__first"></a>
+    <a href="#" class="navigation-button next-button next-button__not-last"></a>
+    
+    </div>
+    
+    {%  elif forloop.last %}
+    
+    <div id='question-{{ question.pk }}' class="question" style="display: None;">
+	     <div class="question-text">{{question.question | linebreaks}}</div>
+
+    <div class="answers">
+    {% for answer in answers %}
+        <a href="#" class="button"> {{ answer.answer}}</a>
+    {% endfor %}
 
     </div>
+    <a href="#" class="navigation-button back-button back-button__not-first"></a>
+    <a href="#" class="navigation-button next-button next-button__last"></a>
+    </div>
+    
+    {% else %}
+    
+    <div id='question-{{ question.pk }}' class="question" style="display: None;">
+	     <div class="question-text">{{question.question | linebreaks}}</div>
+
+    <div class="answers">
+    {% for answer in answers %}
+        <a href="#" class="button"> {{ answer.answer}}</a>
+    {% endfor %}
+
+    </div>
+    <a href="#" class="navigation-button back-button back-button__not-first"></a>
+    <a href="#" class="navigation-button next-button next-button__not-last"></a>
+    </div>
+
+    {% endif %}
+
 {% endfor %}
 	
 </div>
