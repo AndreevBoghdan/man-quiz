@@ -18,4 +18,58 @@ body{
 #wrap {
 	height: 100%; 
 	margin: 0px;
+	position: relative;
+}
+
+#content{
+	position: absolute;
+	height: 780px;
+	width: 1280px;
+	display: inline-block;
+	top:120px;
+	left: 55px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 55px;
+	padding-right: 55px;
+}
+
+.question-text{
+	line-height: 60px;
+	font-size: 40px;
+	font-weight: normal;
+
+}
+
+.answers{
+	position: absolute;
+	left: 55px;
+	bottom: 110px;
+	padding-bottom: 20px;
+}
+
+a.button {
+
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  font-weight: bold;
+  color: rgb(68,68,68);
+  text-decoration: none;
+  user-select: none;
+  outline: none;
+  background-image: url(/static/img/button.png);
+  width:240px;
+  height: 104px;
+  transition: all .218s ease 0s;
+  vertical-align: center;
+  bottom: 10px;
+  font-size: 40px;
+  line-height: 104px;
+  float: left;
+  margin-right: 15px;
+
+}
+a.button:hover {
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }

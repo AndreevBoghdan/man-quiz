@@ -15,6 +15,21 @@
 <div id="wrap">
 	
 <div id="content">
+{% for question, answers in questions %}
+    {% if forloop.first %}
+    <div id='question-{{ question.pk }}' class="question">
+	     <div class="question-text">{{question.question |linebreaks}}</div>
+
+    <div class="answers">
+    {% for answer in answers %}
+        <a href="#" class="button"> {{ answer.answer}}</a>
+    {% endfor %}
+
+    {% endif %}
+    </div>
+
+    </div>
+{% endfor %}
 	
 </div>
 

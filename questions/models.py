@@ -20,7 +20,7 @@ class Question(models.Model):
         db_table = 'question'
     question = models.TextField(max_length=200)
     count = models.IntegerField(default=0)
-    quiz = models.ForeignKey(Quiz, related_name='quiz')
+    quiz = models.ForeignKey(Quiz, related_name='questions')
     number = models.IntegerField(default=0)
 
 
