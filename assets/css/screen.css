@@ -1,0 +1,21 @@
+*{
+	font-family: Arial ;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+body{
+	background-image: url(/static/img/background.png);
+	background-repeat: no-repeat;
+	min-width: 1500px;
+	min-height: 990px;
+	max-width: 1500px;
+	max-height: 990px;
+}
+
+
+#wrap {
+	height: 100%; 
+	margin: 0px;
+}

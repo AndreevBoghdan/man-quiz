@@ -26,7 +26,7 @@ class QuestionAdmin(admin.ModelAdmin):
     """
     Question admin
     """
-    fields=['question', 'quiz']
+    fields=['question',]
     list_display = ( 'question', 'count')
     inlines = [
         AnswerInline,
@@ -39,7 +39,7 @@ class AnswerAdmin(admin.ModelAdmin):
     """
     Answer admin
     """
-    fields=['question', 'answer', 'is_Correct']
+    fields=['answer', 'is_Correct']
     
     list_display = ('answer', 'question', 'is_Correct')
 

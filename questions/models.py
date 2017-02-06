@@ -21,11 +21,11 @@ class Question(models.Model):
     question = models.TextField(max_length=200)
     count = models.IntegerField(default=0)
     quiz = models.ForeignKey(Quiz, related_name='quiz')
+    number = models.IntegerField(default=0)
 
 
     def __str__(self):
         return self.question
-
 
 class Answer(models.Model):
     class Meta():
@@ -33,6 +33,8 @@ class Answer(models.Model):
     answer = models.CharField(max_length=200)
     question = models.ForeignKey(Question, related_name='answers')
     is_Correct = models.BooleanField(default=False)
+    number = models.IntegerField(default=0)
 
     def __str__(self):
         return self.answer
+
