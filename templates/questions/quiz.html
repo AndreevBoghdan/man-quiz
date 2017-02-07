@@ -9,7 +9,6 @@
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/jquery.form.min.js' %}"></script>
-<script src="{% static 'js/script.js' %}"></script>
 
 <link rel="stylesheet" href="{% static 'css/screen.css' %}" media="screen, projection"/>
 
@@ -20,14 +19,42 @@
 	
 <div id="content">
 <h2 id="quiz-headline">{{ quiz.name }}</h2>
+<div style="display:None">
+	<form>
+	{% for question, answers in questions %}
+        <input id="question-{{ question.pk }}-answer" name="answer-for-{{ question.pk }}">
+	{% endfor %}
+		
+	</form>
+
+</div>
 {% for question, answers in questions %}
     {% if forloop.first %}
-    <div id='question-{{ question.pk }}' class="question">
+    <div id='question-{{ question.pk }}' class="question" number="{{ question.number }}">
 	     <div class="question-text">{{question.question | linebreaks}}</div>
 
     <div class="answers">
+    <div class="answer-span-container statistic">
     {% for answer in answers %}
-        <a href="#" class="button"> {{ answer.answer}}</a>
+    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span" is-right="{{ answer.is_Correct }}">{{ answer.answer}}</span>
+    {% endfor %}
+    </div>
+    <br/>
+    <span class='statistic-span statistic'>Auswertung</span>
+    {% for answer in answers %}
+        <a href="#" value="{{ answer.pk}}" class="button answer" number="{{ answer.number }}"> {{ answer.answer}}</a>
+
+        <div class='statistic'>
+        <span class="progress-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-progress-span"></span><div class="progress-bar"><div id="question-{{ question.pk }}_answer-{{ answer.pk}}-progress" class="progress"></div></div>
+        <script type="text/javascript">
+        	var questionNumber = '{{ question.number }}';
+        	var answerNumber = '{{ answer.number }}';
+        	rate = parseInt(answerNumber) * 100 / (parseInt(questionNumber)+1);
+        	$("#question-{{ question.pk }}_answer-{{ answer.pk}}-progress-span").text(rate + " %");
+        	$("#question-{{ question.pk }}_answer-{{ answer.pk}}-progress").width(rate + "%");
+
+        </script>
+        </div>
     {% endfor %}
 
     </div>
@@ -43,7 +70,7 @@
 
     <div class="answers">
     {% for answer in answers %}
-        <a href="#" class="button"> {{ answer.answer}}</a>
+        <a href="#" class="button answer"> {{ answer.answer}}</a>
     {% endfor %}
 
     </div>
@@ -58,7 +85,7 @@
 
     <div class="answers">
     {% for answer in answers %}
-        <a href="#" class="button"> {{ answer.answer}}</a>
+        <a href="#" class="button answer"> {{ answer.answer}}</a>
     {% endfor %}
 
     </div>
@@ -76,4 +103,5 @@
 </div>
 
 
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
