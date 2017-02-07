@@ -46,6 +46,11 @@
         e.preventDefault();
         alert('not implemented');
         });
+    
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
 
 
     $('.answer').click(function(e){
@@ -57,16 +62,31 @@
         var answerNumber = $(this).attr('number');
         var questionNumber = $('#'+ question).attr('number');
         $(this).attr('number', parseInt(answerNumber)+1);
-        var isRight = $('#'+ question+'_answer-'+answer+'-span').attr('is-right');
-            if (isRight=="True"){
-                $('#'+ question+'_answer-'+answer+'-span').css("color", "green");
+        var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        $.ajax({
+            type: "POST",
+            url: ajaxUrl,
+            success: statChangedSecceed,
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+            });
+
+
+        var isRight = $('#' + question+'_answer-' + answer + '-span').attr('is-right');
+            if (isRight == "True"){
+                $('#' + question + '_answer-' + answer + '-span').css("color", "green");
 
             } else {
-                $('#'+ question+'_answer-'+answer+'-span').css("color", "red");
+                $('#' + question + '_answer-' + answer + '-span').css("color", "red");
             }
-        rate = parseInt(answerNumber+1) * 100 / (parseInt(questionNumber)+1);
-        $('#'+ question+'_answer-'+answer+'-progress-span').text(rate + " %");
-        $('#'+ question+'_answer-'+answer+'-progress').width(rate + "%");
+        rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber) + 1);
+        rate = rate.toFixed(2)
+        $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
+        $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
         showStat();
         });
 
@@ -74,6 +94,10 @@ showStat = function (){
     $('.question-answered').last().find('.answer').hide();
     $('.question-answered').last().find('.statistic').show();
     $('.question-answered').last().find('.statistic').css("display", "inline-block");
+
+};
+
+statChangedSecceed = function (){
 
 };
 
