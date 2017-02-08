@@ -18,7 +18,7 @@ class Survey(models.Model):
     def __str__(self):
         return self.name
 
-
+@python_2_unicode_compatible
 class Question(models.Model):
     class Meta():
         db_table = 'question'
@@ -31,6 +31,7 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
+@python_2_unicode_compatible
 class Answer(models.Model):
     class Meta():
         db_table = 'answer'

@@ -28,7 +28,7 @@
 
                 $('.next-button__last').click(function(e){
                     e.preventDefault();
-                    alert('not implemented');
+                    window.external.playNextContentStartsNameInChannel('umfrage', 'main');
                     });
 
         }
@@ -44,7 +44,7 @@
 
     $('.next-button__last').click(function(e){
         e.preventDefault();
-        alert('not implemented');
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main');
         });
     
     function csrfSafeMethod(method) {

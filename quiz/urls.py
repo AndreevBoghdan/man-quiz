@@ -19,5 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^quiz/', include('questions.urls')),
+    url(r'^survey/', include('questions.urls')),
 ]
