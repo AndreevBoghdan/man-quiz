@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-from .models import Question, Answer, Quiz
+from .models import Question, Answer, Survey
 
 
 # Create your views here.
 
 def questions(request, quiz_pk):
-    quiz = Quiz.objects.get(pk=quiz_pk)
+    survey = Survey.objects.get(pk=quiz_pk)
     questions = []
-    for question in Question.objects.filter(quiz=quiz):
+    for question in Question.objects.filter(survey=survey):
         questions.append((question, question.answers.filter()))
 
     return render(request, 'questions/quiz.html',
         {'questions':questions,
-        'quiz':quiz}
+        'survey':survey}
         )
 
 def renew_number(request, question_pk, answer_pk):

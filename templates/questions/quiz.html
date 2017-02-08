@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-	QUIZ
+	Survey
 {% endblock title %}
 
 {% block extra_head %}
@@ -20,7 +20,7 @@
 <div id="wrap">
 	
 <div id="content">
-<h2 id="quiz-headline">{{ quiz.name }}</h2>
+<h2 id="quiz-headline">{{ survey.name }}</h2>
 <div style="display:None">
 	<form>
 	{% for question, answers in questions %}

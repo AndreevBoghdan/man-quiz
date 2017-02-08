@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from models import Quiz, Question, Answer
+from models import Survey, Question, Answer
 
 # Register your models here.
 
@@ -11,15 +11,15 @@ class AnswerInline(admin.TabularInline):
     model = Answer
 
 
-class QuizAdmin(admin.ModelAdmin):
+class SurveyAdmin(admin.ModelAdmin):
     """
-    Quiz admin
+    Survey admin
     """
     inlines = [
         QuestionInline,
     ]
 
-admin.site.register(Quiz, QuizAdmin)
+admin.site.register(Survey, SurveyAdmin)
 
 
 class QuestionAdmin(admin.ModelAdmin):

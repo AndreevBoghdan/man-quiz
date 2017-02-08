@@ -1,26 +1,30 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
 
 # Create your models here.
 
-class Quiz(models.Model):
+@python_2_unicode_compatible
+class Survey(models.Model):
     class Meta():
-        db_table = 'quiz'
+        db_table = 'survey'
 
-    name = models.CharField(max_length=200, default='new Quiz')
+    name = models.CharField(max_length=200, default='new Survey')
     contentName = models.CharField(max_length=100, blank=True)
 
 
     def __str__(self):
         return self.name
 
+
 class Question(models.Model):
     class Meta():
         db_table = 'question'
     question = models.TextField(max_length=200)
     count = models.IntegerField(default=0)
-    quiz = models.ForeignKey(Quiz, related_name='questions')
+    survey = models.ForeignKey(Survey, related_name='questions', blank=True, null=True)
     number = models.IntegerField(default=0)
 
 
