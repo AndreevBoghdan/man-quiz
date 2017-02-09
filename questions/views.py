@@ -10,7 +10,7 @@ from .models import Question, Answer, Survey, Statistic
 from django.conf import settings
 
 
-from pandas.io.sql import read_sql
+from pandas import read_sql
 
 # Create your views here.
 
