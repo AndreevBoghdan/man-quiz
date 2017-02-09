@@ -1,13 +1,16 @@
-import pandas as pd
+
 import sqlite3
 import os
 import subprocess
+
 
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from .models import Question, Answer, Survey, Statistic
 from django.conf import settings
 
+
+from pandas import read_sql
 
 # Create your views here.
 
@@ -40,7 +43,7 @@ def export_view(request, quiz_pk):
     """
     subprocess.call("rm output.csv", shell = True)
     con = sqlite3.connect(settings.DATABASE_NAME)
-    df = pd.read_sql("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
+    df = read_sql("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
     df.to_csv('output.csv', index=False, encoding='utf-8')
     f = open('output.csv', 'r')
     response = HttpResponse(f, content_type='application/force-download')
