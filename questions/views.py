@@ -6,6 +6,7 @@ import subprocess
 
 from django.shortcuts import render
 from django.http.response import HttpResponse
+from django.conf import settings
 from .models import Question, Answer, Survey, Statistic
 
 
@@ -41,7 +42,7 @@ def export_view(request, quiz_pk):
     Export a csv file with data from database.
     """
     subprocess.call("rm output.csv", shell = True)
-    con = sqlite3.connect('db.sqlite3')
+    con = sqlite3.connect(settings.DATABASE_NAME)
     df = read_frame("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
     df.to_csv('output.csv', index=False, encoding='utf-8')
     f = open('output.csv', 'r')
