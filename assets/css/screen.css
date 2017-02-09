@@ -36,7 +36,8 @@ body{
 #quiz-headline{
 	line-height: 60px;
 	font-size: 40px;
-	margin-bottom: 50px;	
+	margin-bottom: 50px;
+	color: rgb(44,59,74);	
 }
 .question-text{
 	line-height: 60px;
@@ -58,7 +59,7 @@ a.button {
   display: inline-block;
   overflow: hidden;
   font-weight: bold;
-  color: rgb(68,68,68);
+  color: rgb(44,59,74);
   text-decoration: none;
   user-select: none;
   outline: none;
@@ -79,7 +80,7 @@ a.navigation-button{
   display: inline-block;
   overflow: hidden;
   font-weight: bold;
-  color: rgb(68,68,68);
+  color: rgb(44,59,74);
   text-decoration: none;
   user-select: none;
   outline: none;
@@ -150,7 +151,7 @@ a.button:hover {
 .progress{
 	height: 100%;
 	width: 100%;
-	background-color:  rgb(68,68,68);
+	background-color: rgb(68,68,68);
 }
 
 .statistic{

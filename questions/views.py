@@ -7,6 +7,7 @@ import subprocess
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.conf import settings
+from django.views.decorators.clickjacking import xframe_options_exempt
 from .models import Question, Answer, Survey, Statistic
 
 
@@ -14,6 +15,7 @@ from pandas.io.sql import read_frame
 
 # Create your views here.
 
+@xframe_options_exempt
 def questions(request, quiz_pk):
     survey = Survey.objects.get(pk=quiz_pk)
     questions = []

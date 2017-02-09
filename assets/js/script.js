@@ -10,7 +10,7 @@
 
                 $('.back-button__first').click(function(e){
                     e.preventDefault();
-                    alert('not implemented');
+                    location.reload();
                     });
 
         }
@@ -38,7 +38,7 @@
 
     $('.back-button__first').click(function(e){
         e.preventDefault();
-        alert('not implemented');
+        location.reload();
         });
 
 

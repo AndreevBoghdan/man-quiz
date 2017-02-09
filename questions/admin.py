@@ -27,7 +27,7 @@ class SurveyAdmin(admin.ModelAdmin):
         return mark_safe(
             '<a href="{0}">{1}</a>'.format(
                 obj.get_absolute_url(),
-                "Go to Survey"
+                obj.get_absolute_url()
             )
         )
 
