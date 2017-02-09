@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-from .models import Question, Answer, Survey
+from .models import Question, Answer, Survey, Statistic
 
 
 # Create your views here.
@@ -25,5 +25,6 @@ def renew_number(request, question_pk, answer_pk):
             answer.number += 1
             question.save()
             answer.save()
+            statistic = Statistic.objects.create(question_id=question_pk, answer=answer.answer)
             return HttpResponse("OK")
 	

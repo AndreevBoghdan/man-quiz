@@ -39,7 +39,7 @@
     <div class="answers">
     <div class="answer-span-container statistic">
     {% for answer in answers %}
-    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span" is-right="{{ answer.is_Correct }}">{{ answer.answer}}</span>
+    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span">{{ answer.answer}}</span>
     {% endfor %}
     </div>
     <br/>
@@ -75,7 +75,7 @@
     <div class="answers">
     <div class="answer-span-container statistic">
     {% for answer in answers %}
-    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span" is-right="{{ answer.is_Correct }}">{{ answer.answer}}</span>
+    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span">{{ answer.answer}}</span>
     {% endfor %}
     </div>
     <br/>
@@ -110,7 +110,7 @@
     <div class="answers">
     <div class="answer-span-container statistic">
     {% for answer in answers %}
-    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span" is-right="{{ answer.is_Correct }}">{{ answer.answer}}</span>
+    <span class="answer-span" id="question-{{ question.pk }}_answer-{{ answer.pk}}-span">{{ answer.answer}}</span>
     {% endfor %}
     </div>
     <br/>

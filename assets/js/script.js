@@ -76,13 +76,7 @@
             });
 
 
-        var isRight = $('#' + question+'_answer-' + answer + '-span').attr('is-right');
-            if (isRight == "True"){
-                $('#' + question + '_answer-' + answer + '-span').css("color", "green");
-
-            } else {
-                $('#' + question + '_answer-' + answer + '-span').css("color", "red");
-            }
+        $('#' + question + '_answer-' + answer + '-span').css("color", "red");
         rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber) + 1);
         rate = rate.toFixed(2)
         $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
@@ -14,6 +15,8 @@ class Survey(models.Model):
     name = models.CharField(max_length=200, default='new Survey')
     contentName = models.CharField(max_length=100, blank=True)
 
+    def get_absolute_url(self):
+        return reverse('questions.views.questions', args=[str(self.pk)])
 
     def __str__(self):
         return self.name
@@ -31,13 +34,19 @@ class Question(models.Model):
     def __str__(self):
         return self.question
 
+class Statistic(models.Model):
+    class Meta():
+        db_table = 'statistic'
+    question_id = models.IntegerField(default=0)
+    answer = models.CharField(max_length=200, null=True)
+    datetime = models.DateTimeField(auto_now_add=True)
+
 @python_2_unicode_compatible
 class Answer(models.Model):
     class Meta():
         db_table = 'answer'
     answer = models.CharField(max_length=200)
     question = models.ForeignKey(Question, related_name='answers')
-    is_Correct = models.BooleanField(default=False)
     number = models.IntegerField(default=0)
 
     def __str__(self):
