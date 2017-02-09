@@ -1,6 +1,8 @@
 {% extends "admin/change_form.html" %}
 {% block  object-tools-items %}
+{% if has_absolute_url %}
 <li>
     <a href="{% url 'export_view' original.pk %}" class="historylink">Download</a>
 </li>
+{% endif %}
 {% endblock %}

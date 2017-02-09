@@ -22,7 +22,7 @@
 
     $('.back-button__first').click(function(e){
         e.preventDefault();
-        location.reload();
+        window.external.PlayPreviousLcInChannelByName ('main');
         });
 
 
