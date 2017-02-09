@@ -37,6 +37,7 @@ class Question(models.Model):
 class Statistic(models.Model):
     class Meta():
         db_table = 'statistic'
+    quiz_id = models.IntegerField(default=0)
     question_id = models.IntegerField(default=0)
     answer = models.CharField(max_length=200, null=True)
     datetime = models.DateTimeField(auto_now_add=True)
