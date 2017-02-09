@@ -9,7 +9,7 @@ from django.http.response import HttpResponse
 from .models import Question, Answer, Survey, Statistic
 
 
-#from pandas import read_sql
+from pandas.io.sql import read_frame
 
 # Create your views here.
 
@@ -42,7 +42,7 @@ def export_view(request, quiz_pk):
     """
     subprocess.call("rm output.csv", shell = True)
     con = sqlite3.connect('db.sqlite3')
-    df = read_sql("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
+    df = read_frame("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
     df.to_csv('output.csv', index=False, encoding='utf-8')
     f = open('output.csv', 'r')
     response = HttpResponse(f, content_type='application/force-download')
