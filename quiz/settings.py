@@ -82,6 +82,9 @@ DATABASES = {
     }
 }
 
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = os.path.join(BASE_DIR, 'db.sqlite3')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
