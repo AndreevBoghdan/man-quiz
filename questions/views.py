@@ -44,8 +44,8 @@ def export_view(request, quiz_pk):
     subprocess.call("rm output.csv", shell = True)
     con = sqlite3.connect(settings.DATABASE_NAME)
     df = read_frame("SELECT question_id, answer, datetime FROM statistic WHERE quiz_id = %s" % quiz_pk, con)
-    df.to_csv('output.csv', index=False, encoding='utf-8')
-    f = open('output.csv', 'r')
+    df.to_csv(settings.OUTPUT_NAME, index=False, encoding='utf-8')
+    f = open(settings.OUTPUT_NAME, 'r')
     response = HttpResponse(f, content_type='application/force-download')
     response['Content-Disposition'] = 'attachment; filename=' + 'output.csv'
     return response
