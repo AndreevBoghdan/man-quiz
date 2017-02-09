@@ -4,17 +4,9 @@
         e.preventDefault();
         $(this).parent().hide();
         $(this).parent().next().show();
-        if ( ($(this).parent().attr('id') ==  $('.question').first().attr('id')) && ($('.question-answered').length==1)){
-            $('.back-button__not-first').first().off('click');
-            $('.back-button__not-first').first().attr("class","navigation-button back-button back-button__first");
-
-                $('.back-button__first').click(function(e){
-                    e.preventDefault();
-                    location.reload();
-                    });
-
-        }
-        $('.question-answered').remove();
+        
+        hideStat();
+        $('.answer-span').css("color", "rgb(44,59,74)");
         });
 
 
@@ -22,17 +14,9 @@
         e.preventDefault();
         $(this).parent().hide();
         $(this).parent().prev().show();
-        if ( ($(this).parent().attr('id') ==  $('.question').last().attr('id')) && ($('.question-answered').length==1) ){
-            $('.next-button__not-last').last().off('click');
-            $('.next-button__not-last').last().attr("class","navigation-button next-button next-button__last");
 
-                $('.next-button__last').click(function(e){
-                    e.preventDefault();
-                    window.external.playNextContentStartsNameInChannel('umfrage', 'main');
-                    });
-
-        }
-        $('.question-answered').remove();
+        hideStat()
+        $('.answer-span').css("color", "rgb(44,59,74)");
         });
 
 
@@ -82,12 +66,20 @@
         $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
         $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
         showStat();
+
         });
 
 showStat = function (){
     $('.question-answered').last().find('.answer').hide();
     $('.question-answered').last().find('.statistic').show();
     $('.question-answered').last().find('.statistic').css("display", "inline-block");
+
+};
+
+hideStat = function (){
+    $('.question-answered').last().find('.answer').show();
+    $('.question-answered').last().find('.statistic').hide();
+    $('.question-answered').removeClass('question-answered');
 
 };
 

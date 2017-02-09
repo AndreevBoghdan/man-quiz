@@ -14,10 +14,6 @@ class QuestionInline(admin.TabularInline):
 class AnswerInline(admin.TabularInline):
     model = Answer
 
-class SiteAdmin(admin.ModelAdmin):
-    model = Site
-
-    admin.site.register(Site)
 
 class SurveyAdmin(admin.ModelAdmin):
     """
