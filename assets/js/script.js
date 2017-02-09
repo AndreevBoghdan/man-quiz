@@ -1,5 +1,3 @@
-
-
     $('.next-button__not-last').click(function(e){
         e.preventDefault();
         $(this).parent().hide();
@@ -40,34 +38,42 @@
     $('.answer').click(function(e){
         e.preventDefault();
         $(this).parent().parent().addClass('question-answered');
-        var question = $(this).parent().parent().attr('id');
-        var answer = $(this).attr('value');
-        $('#' + question +'-answer').attr("value",answer);
-        var answerNumber = $(this).attr('number');
-        var questionNumber = $('#'+ question).attr('number');
-        $(this).attr('number', parseInt(answerNumber)+1);
+        var chosen = $(this);
+        $('.question-answered').find('.answer').each(function( index ) {
 
-        var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
-        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-        $.ajax({
-            type: "POST",
-            url: ajaxUrl,
-            success: statChangedSecceed,
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            var question = $(this).parent().parent().attr('id');
+            var answer = $(this).attr('value');
+            $('#' + question +'-answer').attr("value",answer);
+            var answerNumber = $(this).attr('number');
+            var questionNumber = $('#'+ question).attr('number');
+            $(this).attr('number', parseInt(answerNumber)+1);
+
+            var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
+            var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+            $.ajax({
+                type: "POST",
+                url: ajaxUrl,
+                success: statChangedSecceed,
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
                 }
+                });
+
+            if ($(this).attr('number')==chosen.attr('number')){
+                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber) + 1);
+                $('#' + question + '_answer-' + answer + '-span').css("color", "red");
+            } else {
+                rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber) + 1);
             }
-            });
-
-
-        $('#' + question + '_answer-' + answer + '-span').css("color", "red");
-        rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber) + 1);
-        rate = rate.toFixed(2)
-        $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
-        $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
+            rate = rate.toFixed(2)
+            $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
+            $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
+            $('#'+ question).attr('number', parseInt(questionNumber)+1);
+        });
         showStat();
-        $('#'+ question).attr('number', parseInt(questionNumber)+1);
+
         });
 
 showStat = function (){
