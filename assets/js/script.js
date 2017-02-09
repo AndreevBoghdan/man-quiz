@@ -46,6 +46,7 @@
         var answerNumber = $(this).attr('number');
         var questionNumber = $('#'+ question).attr('number');
         $(this).attr('number', parseInt(answerNumber)+1);
+
         var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         $.ajax({
@@ -66,7 +67,7 @@
         $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
         $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
         showStat();
-
+        $('#'+ question).attr('number', parseInt(questionNumber)+1);
         });
 
 showStat = function (){

@@ -13,7 +13,6 @@ class Survey(models.Model):
         db_table = 'survey'
 
     name = models.CharField(max_length=200, default='new Survey')
-    contentName = models.CharField(max_length=100, blank=True)
 
     def get_absolute_url(self):
         return reverse('questions.views.questions', args=[str(self.pk)])
