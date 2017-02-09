@@ -9,7 +9,7 @@ from django.http.response import HttpResponse
 from .models import Question, Answer, Survey, Statistic
 
 
-from pandas import read_sql
+#from pandas import read_sql
 
 # Create your views here.
 
