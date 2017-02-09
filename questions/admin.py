@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe 
+from django.contrib.sites.models import Site
 
 from models import Survey, Question, Answer, Statistic
 
@@ -24,10 +25,11 @@ class SurveyAdmin(admin.ModelAdmin):
     ]
 
     def view_link(self, obj):
+        current_site = Site.objects.get_current()
         return mark_safe(
             '<a href="{0}">{1}</a>'.format(
                 obj.get_absolute_url(),
-                obj.get_absolute_url()
+                current_site.domain + obj.get_absolute_url()
             )
         )
 
@@ -70,7 +72,7 @@ class AnswerAdmin(admin.ModelAdmin):
     """
     Answer admin
     """
-    fields=['answer', 'is_Correct']
+    fields=['answer']
     
     list_display = ('answer', 'question' )
 

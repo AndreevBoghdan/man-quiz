@@ -11,7 +11,7 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 from .models import Question, Answer, Survey, Statistic
 
 
-from pandas.io.sql import read_frame
+# from pandas.io.sql import read_frame
 
 # Create your views here.
 
