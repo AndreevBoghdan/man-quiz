@@ -15,14 +15,14 @@ class AnswerInline(NestedStackedInline):
     model = Answer
     extra = 0
     fk_name = 'question'
-    fields=['answer', 'number']
+    fields=['answer', ]
 
 
 class QuestionInline(NestedStackedInline):
     model = Question
     extra = 0
     fk_name = 'survey'
-    fields=['question', 'number']
+    fields=['question', ]
     inlines = [
         AnswerInline,
     ]
@@ -82,7 +82,7 @@ class QuestionAdmin(admin.ModelAdmin):
     Question admin
     """
     list_filter = ('survey',)
-    fields=['question','survey', 'number']
+    fields=['question','survey', ]
     list_display = ( 'question',)
     inlines = [
         AnswerInline,
@@ -96,7 +96,7 @@ class AnswerAdmin(admin.ModelAdmin):
     Answer admin
     """
     list_filter = ('answer',)
-    fields=['answer', 'number']
+    fields=['answer', ]
     
     list_display = ('answer', 'question' )
 
