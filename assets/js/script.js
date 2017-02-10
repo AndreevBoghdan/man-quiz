@@ -94,3 +94,16 @@ statChangedSecceed = function (){
 
 };
 
+var tim = setTimeout(function(){
+    alert('every 300 sec mix-l exec');
+    tim = setTimeout(function(){
+    alert('every 300 sec mix-l exec');
+    },30000);
+},30000);
+
+$('body').click(function(){
+    clearTimeout(tim);
+    tim = setTimeout(function(){
+    alert('every 300 sec mix-l exec');
+    },30000);
+});
