@@ -9,6 +9,7 @@ from django.http.response import HttpResponse
 from django.conf import settings
 from django.views.decorators.clickjacking import xframe_options_exempt
 from .models import Question, Answer, Survey, Statistic
+import signals
 
 
 from pandas.io.sql import read_frame
