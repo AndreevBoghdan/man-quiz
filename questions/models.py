@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.contrib.auth.models import User
+from django.contrib.auth.models import BaseUserManager
 
 
 # Create your models here.
@@ -56,3 +58,15 @@ class Answer(models.Model):
     def __str__(self):
         return self.answer
 
+class UserManager(BaseUserManager):
+
+    def create_user(self, username, email, password, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(username, email, password, **extra_fields)

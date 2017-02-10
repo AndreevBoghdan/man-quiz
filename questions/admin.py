@@ -2,7 +2,9 @@ from django import forms
 from django.contrib import admin
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe 
-
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
 from models import Survey, Question, Answer, Statistic
@@ -102,5 +104,30 @@ class AnswerAdmin(admin.ModelAdmin):
 
 admin.site.register(Answer, AnswerAdmin)
 
+class UserCreateForm(UserCreationForm):
+    
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.is_staff = True
+        user.is_superuser=True
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user
 
 
+class UserAdmin(BaseUserAdmin):
+    add_form = UserCreateForm
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'first_name', 'email','password1', 'password2', ),
+        }),
+    )
+
+    fieldsets = (
+        ('Personal info', {'fields': ('username', 'first_name', 'last_name', 'email')}),
+    )
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
