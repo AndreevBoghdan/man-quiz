@@ -2,7 +2,10 @@
 {% block  object-tools-items %}
 {% if has_absolute_url %}
 <li>
-    <a href="{% url 'export_view' original.pk %}" class="historylink">Download</a>
+    <a href="{% url 'export_view' original.pk %}" class="historylink">Download statistics</a>
+</li>
+<li>
+    <a href="/admin/questions/graphic/?survey__id__exact={{original.pk}}" class="historylink">Graph</a>
 </li>
 {% endif %}
 {% endblock %}

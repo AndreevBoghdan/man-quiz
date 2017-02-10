@@ -70,3 +70,16 @@ class UserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self._create_user(username, email, password, **extra_fields)
+
+
+@python_2_unicode_compatible
+class Graphic(models.Model):
+    class Meta():
+        db_table = 'graphic'
+        verbose_name_plural = 'Graphic'
+    survey = models.ForeignKey(Survey, related_name='graphics', blank=True, null=True)
+    question = models.ForeignKey(Question, related_name='graphics')
+
+
+    def __str__(self):
+        return self.question.question

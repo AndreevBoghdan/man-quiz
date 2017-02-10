@@ -12,7 +12,7 @@ from .models import Question, Answer, Survey, Statistic
 import signals
 
 
-from pandas.io.sql import read_frame
+#from pandas.io.sql import read_frame
 
 # Create your views here.
 

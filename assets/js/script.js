@@ -8,7 +8,7 @@
 
     $('.next-button__not-last').bind('touchstart', function(e){
         e.preventDefault();
-        alert('lol');
+
         $(this).parent().hide();
         $(this).parent().next().show();
         hideStat();
@@ -89,7 +89,7 @@
 
     $('.answer').click(function(e){
         e.preventDefault();
-        alert('lol');
+
         $(this).parent().parent().addClass('question-answered');
         var chosen = $(this);
         var question = $(this).parent().parent().attr('id');
@@ -114,7 +114,7 @@
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
-                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber));
+                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber)+1);
                 $('#' + question + '_answer-' + answer + '-span').css("color", "red");
             } else {
                 rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber)+1);
@@ -129,7 +129,7 @@
 
     $('.answer').bind('touchstart', function(e){
         e.preventDefault();
-        alert('lol');
+
         $(this).parent().parent().addClass('question-answered');
         var chosen = $(this);
         var question = $(this).parent().parent().attr('id');
@@ -154,7 +154,7 @@
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
-                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber));
+                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber)+1);
                 $('#' + question + '_answer-' + answer + '-span').css("color", "red");
             } else {
                 rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber)+1);
@@ -169,7 +169,7 @@
 
     $('.answer').mousedown(function(e){
         e.preventDefault();
-        alert('lol');
+
         $(this).parent().parent().addClass('question-answered');
         var chosen = $(this);
         var question = $(this).parent().parent().attr('id');
@@ -194,7 +194,7 @@
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
-                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber));
+                rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber)+1);
                 $('#' + question + '_answer-' + answer + '-span').css("color", "red");
             } else {
                 rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber)+1);

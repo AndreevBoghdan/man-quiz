@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
-from models import Survey, Question, Answer, Statistic
+from models import Survey, Question, Answer, Statistic, Graphic
 
 # Register your models here.
 
@@ -34,7 +34,7 @@ class SurveyAdmin(NestedModelAdmin):
     """
     Survey admin
     """
-    list_display = ('name', 'view_link', 'statistics' )
+    list_display = ('name', 'view_link', 'statistics', 'graph' )
     inlines = [
         QuestionInline, 
     ]
@@ -60,6 +60,15 @@ class SurveyAdmin(NestedModelAdmin):
 
     view_link.allow_tags = True
     view_link.short_description = "Download statistics"
+
+
+    def graph(self, obj):
+        return mark_safe(
+            '<a href="{0}">{1}</a>'.format(
+                "/admin/questions/graphic/?survey__id__exact=" + str(obj.id),
+                'Graph'
+            )
+        )
 
     def get_osm_info(self):
         # ...
@@ -131,3 +140,76 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+class GraphicAdmin(admin.ModelAdmin):
+    """
+    Graphic admin
+    """
+    list_filter = ('survey',)
+    search_fields = ['survey', ] 
+    list_display = ('question_view', 'first_answer', 'second_answer', 'third_answer', 'fourth_answer', 'fifth_answer')
+    fields=['question', ]
+    readonly_fields=('question', 'survey' )
+
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def question_view(self, obj):
+        return obj.question
+
+    def first_answer(self, obj):
+        answers = Answer.objects.filter(question=obj.question)
+        num_question = obj.question.number
+        if int(num_question)!=0 and len(answers)>=1:
+            num_answer = answers[0].number
+            percent = round(float(num_answer) * 100 / int(num_question), 2)
+            return str(answers[0]) + " - " + str(percent) + "%"
+        else:
+            return " "
+
+    def second_answer(self, obj):
+        answers = Answer.objects.filter(question=obj.question)
+        num_question = obj.question.number
+        if int(num_question)!=0 and len(answers)>=2:
+            num_answer = answers[1].number
+            percent = round(float(num_answer) * 100 / int(num_question), 2)
+            return str(answers[1]) + " - " + str(percent) + "%"
+        else:
+            return " "
+
+    def third_answer(self, obj):
+        answers = Answer.objects.filter(question=obj.question)
+        num_question = obj.question.number
+        if int(num_question)!=0 and len(answers)>=3:
+            num_answer = answers[2].number
+            percent = round(float(num_answer) * 100 / int(num_question), 2)
+            return str(answers[2]) + " - " + str(percent) + "%"
+        else:
+            return " "
+
+    def fourth_answer(self, obj):
+        answers = Answer.objects.filter(question=obj.question)
+        num_question = obj.question.number
+        if int(num_question)!=0 and len(answers)>=4:
+            num_answer = answers[3].number
+            percent = round(float(num_answer) * 100 / int(num_question), 2)
+            return str(answers[3]) + " - " + str(percent) + "%"
+        else:
+            return " "
+
+    def fifth_answer(self, obj):
+        answers = Answer.objects.filter(question=obj.question)
+        num_question = obj.question.number
+        if int(num_question)!=0 and len(answers)>=5:
+            num_answer = answers[4].number
+            percent = round(float(num_answer) * 100 / int(num_question), 2)
+            return str(answers[4]) + " - " + str(percent) + "%"
+        else:
+            return " "
+
+
+admin.site.register(Graphic, GraphicAdmin)
