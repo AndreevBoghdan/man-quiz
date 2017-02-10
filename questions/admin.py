@@ -147,6 +147,7 @@ class GraphicAdmin(admin.ModelAdmin):
     Graphic admin
     """
     list_filter = ('survey',)
+    list_display_links = None
     search_fields = ['survey', ] 
     list_display = ('question_view', 'first_answer', 'second_answer', 'third_answer', 'fourth_answer', 'fifth_answer')
     fields=['question', ]
