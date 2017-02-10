@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questions',
-    'django.contrib.sites',
     'nested_inline',
 ]
 
-SITE_ID = 3
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',

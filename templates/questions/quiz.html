@@ -63,7 +63,11 @@
 
     </div>
     <a href="#" class="navigation-button back-button back-button__first"></a>
-    <a href="#" class="navigation-button next-button next-button__not-last"></a>
+        {%  if forloop.last %}
+        <a href="#" class="navigation-button next-button next-button__last"></a>
+        {% else %}
+        <a href="#" class="navigation-button next-button next-button__not-last"></a>
+        {% endif %}
     
     </div>
     
