@@ -107,7 +107,7 @@ class AnswerAdmin(admin.ModelAdmin):
     Answer admin
     """
     list_filter = ('answer',)
-    fields=['answer', ]
+    fields=['answer', 'question' ]
     
     list_display = ('answer', 'question' )
 
