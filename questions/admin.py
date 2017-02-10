@@ -4,24 +4,37 @@ from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe 
 from django.contrib.sites.models import Site
 
+from nested_inline.admin import NestedStackedInline, NestedModelAdmin
+
 from models import Survey, Question, Answer, Statistic
 
 # Register your models here.
 
-class QuestionInline(admin.TabularInline):
-    model = Question
 
-class AnswerInline(admin.TabularInline):
+class AnswerInline(NestedStackedInline):
     model = Answer
+    extra = 1
+    fk_name = 'question'
+    fields=['answer']
 
 
-class SurveyAdmin(admin.ModelAdmin):
+class QuestionInline(NestedStackedInline):
+    model = Question
+    extra = 1
+    fk_name = 'survey'
+    fields=['question', ]
+    inlines = [
+        AnswerInline,
+    ]
+
+
+class SurveyAdmin(NestedModelAdmin):
     """
     Survey admin
     """
     list_display = ('name', 'view_link' )
     inlines = [
-        QuestionInline,
+        QuestionInline, 
     ]
 
     def view_link(self, obj):
@@ -50,9 +63,9 @@ class SurveyAdmin(admin.ModelAdmin):
 admin.site.register(Survey, SurveyAdmin)
 
 class StatisticAdmin(admin.ModelAdmin):
-    model = Statistic
+    list_display = ('question_id', 'datetime' )
 
-admin.site.register(Statistic)
+admin.site.register(Statistic, StatisticAdmin)
 
 class QuestionAdmin(admin.ModelAdmin):
     """
@@ -60,7 +73,7 @@ class QuestionAdmin(admin.ModelAdmin):
     """
     list_filter = ('survey',)
     fields=['question','survey', ]
-    list_display = ( 'question', 'count')
+    list_display = ( 'question',)
     inlines = [
         AnswerInline,
     ]
@@ -72,6 +85,7 @@ class AnswerAdmin(admin.ModelAdmin):
     """
     Answer admin
     """
+    list_filter = ('answer',)
     fields=['answer']
     
     list_display = ('answer', 'question' )

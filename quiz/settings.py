@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questions',
     'django.contrib.sites',
+    'nested_inline',
 ]
 
 SITE_ID = 3

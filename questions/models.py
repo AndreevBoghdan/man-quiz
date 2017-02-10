@@ -11,6 +11,7 @@ from django.utils.encoding import python_2_unicode_compatible
 class Survey(models.Model):
     class Meta():
         db_table = 'survey'
+        verbose_name_plural = '   Survey'
 
     name = models.CharField(max_length=200, default='new Survey')
 
@@ -24,6 +25,7 @@ class Survey(models.Model):
 class Question(models.Model):
     class Meta():
         db_table = 'question'
+        verbose_name_plural = '  Question'
     question = models.TextField(max_length=200)
     count = models.IntegerField(default=0)
     survey = models.ForeignKey(Survey, related_name='questions', blank=True, null=True)
@@ -36,6 +38,7 @@ class Question(models.Model):
 class Statistic(models.Model):
     class Meta():
         db_table = 'statistic'
+        verbose_name_plural = 'Statistic'
     quiz_id = models.IntegerField(default=0)
     question_id = models.IntegerField(default=0)
     answer = models.CharField(max_length=200, null=True)
@@ -45,6 +48,7 @@ class Statistic(models.Model):
 class Answer(models.Model):
     class Meta():
         db_table = 'answer'
+        verbose_name_plural = ' Answer'
     answer = models.CharField(max_length=200)
     question = models.ForeignKey(Question, related_name='answers')
     number = models.IntegerField(default=0)
