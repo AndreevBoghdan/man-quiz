@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
 from models import Survey, Question, Answer, Statistic, Graphic
+import signals
 
 # Register your models here.
 
