@@ -148,6 +148,7 @@ class GraphicAdmin(admin.ModelAdmin):
     """
     list_filter = ('survey',)
     list_display_links = None
+
     search_fields = ['survey', ] 
     list_display = ('question_view', 'first_answer', 'second_answer', 'third_answer', 'fourth_answer', 'fifth_answer')
     fields=['question', ]
@@ -214,4 +215,5 @@ class GraphicAdmin(admin.ModelAdmin):
             return " "
 
 
+admin.site.disable_action('delete_selected')
 admin.site.register(Graphic, GraphicAdmin)

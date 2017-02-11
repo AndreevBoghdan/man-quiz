@@ -1,0 +1,10 @@
+{% extends "admin/change_list.html" %}
+{% block  object-tools %}
+{% if  'survey__id__exact' in request.GET %}
+<ul class="object-tools">
+<li>
+    <a href="/survey/download/{{request.GET.survey__id__exact }}" class="historylink">Download statistics</a>
+</li>
+</ul>
+{% endif %}
+{% endblock %}
