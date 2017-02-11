@@ -110,7 +110,7 @@
                     url: ajaxUrl,
                     success: statChangedSecceed,
                     error:  function(resp){
-                        alert(resp.responseText);
+                        console.log(resp.responseText);
                     },
                     beforeSend: function(xhr, settings) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -151,7 +151,7 @@
                     url: ajaxUrl,
                     success: statChangedSecceed,
                     error:  function(resp){
-                        alert(resp.responseText);
+                        console.log(resp.responseText);
                     }, 
                     beforeSend: function(xhr, settings) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -192,7 +192,7 @@
                     url: ajaxUrl,
                     success: statChangedSecceed,
                     error:  function(resp){
-                        alert(resp.responseText);
+                        console.log(resp.responseText);
                     },
                     beforeSend: function(xhr, settings) {
                         xhr.setRequestHeader("X-CSRFToken", csrftoken);
