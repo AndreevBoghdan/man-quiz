@@ -230,30 +230,30 @@ statChangedSecceed = function (){
 
 };
 
-interval = window.setInterval(function(){
+timeout = window.setTimeout(function(){
     playNextContentStartsNameInChannel("umfrage", 'main');
 }, 30000);
 
 
 $('body').click(function(){
-    window.clearInterval(interval);
-    interval = window.setInterval(function(){
+    window.clearTimeout(timeout);
+    timeout = window.setTimeout(function(){
         playNextContentStartsNameInChannel("umfrage", 'main');
     }, 120000);
 
 });
 
 $('body').bind('touchstart', function(){
-    window.clearInterval(interval);
-    interval = window.setInterval(function(){
+    window.clearTimeout(timeout);
+    timeout = window.setTimeout(function(){
         playNextContentStartsNameInChannel("umfrage", 'main');
     }, 120000);
 
 });
 
 $('body').mousedown(function(){
-    window.clearInterval(interval);
-    interval = window.setInterval(function(){
+    window.clearTimeout(timeout);
+    timeout = window.setTimeout(function(){
         playNextContentStartsNameInChannel("umfrage", 'main');
     }, 120000);
 
