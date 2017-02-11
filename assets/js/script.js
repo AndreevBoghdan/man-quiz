@@ -101,7 +101,9 @@
             var answerNumber = $(this).attr('number');
 
             if ($(this).attr('value')==chosen.attr('value')){
-                var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
+                var ajaxUrl = "http://h1475695.stratoserver.net" +  $('#' + question + '_answer-' + answer + '-url').val();
+
+
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
                 $.ajax({
                     type: "POST",
@@ -141,7 +143,7 @@
             var answerNumber = $(this).attr('number');
 
             if ($(this).attr('value')==chosen.attr('value')){
-                var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
+                var ajaxUrl = "http://h1475695.stratoserver.net" + $('#' + question + '_answer-' + answer + '-url').val();
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
                 $.ajax({
                     type: "POST",
@@ -181,7 +183,7 @@
             var answerNumber = $(this).attr('number');
 
             if ($(this).attr('value')==chosen.attr('value')){
-                var ajaxUrl = $('#' + question + '_answer-' + answer + '-url').val();
+                var ajaxUrl = "http://h1475695.stratoserver.net" + $('#' + question + '_answer-' + answer + '-url').val();
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
                 $.ajax({
                     type: "POST",
