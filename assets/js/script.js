@@ -113,9 +113,7 @@
                         alert(resp.responseText);
                     },
                     beforeSend: function(xhr, settings) {
-                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                        }
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
@@ -156,9 +154,7 @@
                         alert(resp.responseText);
                     }, 
                     beforeSend: function(xhr, settings) {
-                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                        }
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
@@ -199,9 +195,7 @@
                         alert(resp.responseText);
                     },
                     beforeSend: function(xhr, settings) {
-                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                        }
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
                     }
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
