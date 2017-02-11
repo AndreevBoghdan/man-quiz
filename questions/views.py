@@ -7,6 +7,7 @@ import subprocess
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.clickjacking import xframe_options_exempt
 from .models import Question, Answer, Survey, Statistic
 import signals
@@ -28,6 +29,7 @@ def questions(request, quiz_pk):
         'survey':survey}
         )
 
+@csrf_exempt
 def renew_number(request, question_pk, answer_pk):
     if request.method == "POST":
         if request.is_ajax():
