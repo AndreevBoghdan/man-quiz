@@ -109,6 +109,9 @@
                     type: "POST",
                     url: ajaxUrl,
                     success: statChangedSecceed,
+                    error:  function(resp){
+                        alert(resp.responseText);
+                    }
                     beforeSend: function(xhr, settings) {
                         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -149,6 +152,9 @@
                     type: "POST",
                     url: ajaxUrl,
                     success: statChangedSecceed,
+                    error:  function(resp){
+                        alert(resp.responseText);
+                    } 
                     beforeSend: function(xhr, settings) {
                         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -189,6 +195,9 @@
                     type: "POST",
                     url: ajaxUrl,
                     success: statChangedSecceed,
+                    error:  function(resp){
+                        alert(resp.responseText);
+                    }
                     beforeSend: function(xhr, settings) {
                         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader("X-CSRFToken", csrftoken);
