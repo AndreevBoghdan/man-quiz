@@ -91,7 +91,7 @@
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
                 rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber)+1);
-                $('#' + question + '_answer-' + answer + '-span').css("color", "red");
+                $('#' + question + '_answer-' + answer + '-span').css("color", "rgb(230,0,70)");
             } else {
                 rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber)+1);
             }
@@ -132,7 +132,7 @@
                     });
                 $(this).attr('number', parseInt(answerNumber)+1);
                 rate = (parseInt(answerNumber)+1) * 100 / (parseInt(questionNumber)+1);
-                $('#' + question + '_answer-' + answer + '-span').css("color", "red");
+                $('#' + question + '_answer-' + answer + '-span').css("color", "rgb(230,0,70)");
             } else {
                 rate = (parseInt(answerNumber)) * 100 / (parseInt(questionNumber)+1);
             }
