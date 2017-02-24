@@ -23,7 +23,7 @@ class AnswerInline(NestedStackedInline):
 
 class QuestionInline(NestedStackedInline):
     model = Question
-    extra = 0
+    extra = 1
     fk_name = 'survey'
     fields=['question', ]
     inlines = [
@@ -100,6 +100,9 @@ class QuestionAdmin(admin.ModelAdmin):
         AnswerInline,
     ]
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
 admin.site.register(Question, QuestionAdmin)
 
 
@@ -107,6 +110,9 @@ class AnswerAdmin(admin.ModelAdmin):
     """
     Answer admin
     """
+    def has_add_permission(self, request, obj=None):
+        return False
+    
     list_filter = ('answer',)
     fields=['answer', 'question' ]
     
