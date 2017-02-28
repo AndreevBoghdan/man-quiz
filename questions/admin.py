@@ -17,6 +17,7 @@ domain = 'http://h1475695.stratoserver.net'
 class AnswerInline(NestedStackedInline):
     model = Answer
     extra = 0
+    max_num = 5
     fk_name = 'question'
     fields=['answer', ]
 

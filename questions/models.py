@@ -51,7 +51,7 @@ class Answer(models.Model):
     class Meta():
         db_table = 'answer'
         verbose_name_plural = ' Answer'
-    answer = models.CharField(max_length=200)
+    answer = models.CharField(max_length=200, blank=True)
     question = models.ForeignKey(Question, related_name='answers')
     number = models.IntegerField(default=0)
 
