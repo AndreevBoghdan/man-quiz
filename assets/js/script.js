@@ -1,3 +1,16 @@
+jQuery(document).ready(function ($) {
+    var interactive = location.search.split('interactive=')[1] ? location.search.split('interactive=')[1] : '0';
+    if(interactive == 1){
+        //alert("setMenuActive('menuItem2')");
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
+    } else {
+        //alert("resetAll()");        
+        window.external.callMethodInChannelFramesByName("navi", "resetAll()");
+    }
+});
+
+
+
 
     $('.next-button__not-last').bind('touchstart', function(e){
         e.preventDefault();
@@ -36,22 +49,26 @@
 
     $('.back-button__first').bind('touchstart',function(e){
         e.preventDefault();
+        window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         window.external.PlayPreviousLcInChannelByName ('main');
         });
 
     $('.back-button__first').mousedown(function(e){
         e.preventDefault();
+        window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         window.external.PlayPreviousLcInChannelByName ('main');
         });
 
 
     $('.next-button__last').bind('touchstart', function(e){
         e.preventDefault();
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         window.external.playNextContentStartsNameInChannel('umfrage', 'main');
         });
 
     $('.next-button__last').mousedown(function(e){
         e.preventDefault();
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         window.external.playNextContentStartsNameInChannel('umfrage', 'main');
         });
     
@@ -168,6 +185,7 @@ statChangedSecceed = function (){
 };
 
 timeout = window.setTimeout(function(){
+    window.external.callMethodInChannelFramesByName("navi", "resetAll()");
     playNextContentStartsNameInChannel("umfrage", 'main');
 }, 30000);
 
@@ -175,6 +193,7 @@ timeout = window.setTimeout(function(){
 $('body').bind('touchstart', function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
+        window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         playNextContentStartsNameInChannel("umfrage", 'main');
     }, 120000);
 
@@ -183,6 +202,7 @@ $('body').bind('touchstart', function(){
 $('body').mousedown(function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
+        window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         playNextContentStartsNameInChannel("umfrage", 'main');
     }, 120000);
 
