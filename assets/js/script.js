@@ -194,7 +194,7 @@ $('body').bind('touchstart', function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
-        playNextContentStartsNameInChannel("umfrage", 'main');
+        window.external.playNextContentStartsNameInChannel("umfrage", 'main', false, true);
     }, 120000);
 
 });
@@ -203,7 +203,7 @@ $('body').mousedown(function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
-        playNextContentStartsNameInChannel("umfrage", 'main');
+        window.external.playNextContentStartsNameInChannel("umfrage", 'main', false, true);
     }, 120000);
 
 });
