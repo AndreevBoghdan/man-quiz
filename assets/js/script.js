@@ -63,13 +63,13 @@ jQuery(document).ready(function ($) {
     $('.next-button__last').bind('touchstart', function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main');
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
         });
 
     $('.next-button__last').mousedown(function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main');
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
         });
     
     function csrfSafeMethod(method) {
@@ -186,7 +186,7 @@ statChangedSecceed = function (){
 
 timeout = window.setTimeout(function(){
     window.external.callMethodInChannelFramesByName("navi", "resetAll()");
-    playNextContentStartsNameInChannel("umfrage", 'main');
+    window.external.HTMLTemplateComplete(window.name);
 }, 30000);
 
 
@@ -194,7 +194,7 @@ $('body').bind('touchstart', function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
-        window.external.playNextContentStartsNameInChannel("umfrage", 'main', false, true);
+        window.external.HTMLTemplateComplete(window.name);
     }, 120000);
 
 });
@@ -203,7 +203,7 @@ $('body').mousedown(function(){
     window.clearTimeout(timeout);
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
-        window.external.playNextContentStartsNameInChannel("umfrage", 'main', false, true);
+        window.external.HTMLTemplateComplete(window.name);
     }, 120000);
 
 });
