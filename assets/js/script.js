@@ -14,9 +14,10 @@ jQuery(document).ready(function ($) {
 
     $('.next-button__not-last').bind('touchstart', function(e){
         e.preventDefault();
-
+        
         $(this).parent().hide();
         $(this).parent().next().show();
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         hideStat();
         });
 
@@ -24,6 +25,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $(this).parent().hide();
         $(this).parent().next().show();
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         hideStat();
         });
 
@@ -32,7 +34,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $(this).parent().hide();
         $(this).parent().prev().show();
-
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         hideStat()
 
         });
@@ -41,7 +43,7 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         $(this).parent().hide();
         $(this).parent().prev().show();
-
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         hideStat()
 
         });
@@ -63,13 +65,13 @@ jQuery(document).ready(function ($) {
     $('.next-button__last').bind('touchstart', function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', true, true);
         });
 
     $('.next-button__last').mousedown(function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', true, true);
         });
     
     function csrfSafeMethod(method) {
@@ -116,6 +118,7 @@ jQuery(document).ready(function ($) {
             $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
             $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
         });
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         showStat();
 
         });
@@ -157,6 +160,7 @@ jQuery(document).ready(function ($) {
             $('#' + question + '_answer-' + answer + '-progress-span').text(rate + " %");
             $('#' + question + '_answer-' + answer + '-progress').width(rate + "%");
         });
+        window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
         showStat();
 
         });
@@ -192,6 +196,7 @@ timeout = window.setTimeout(function(){
 
 $('body').bind('touchstart', function(){
     window.clearTimeout(timeout);
+    window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         window.external.HTMLTemplateComplete(window.name);
@@ -201,6 +206,7 @@ $('body').bind('touchstart', function(){
 
 $('body').mousedown(function(){
     window.clearTimeout(timeout);
+    window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
     timeout = window.setTimeout(function(){
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
         window.external.HTMLTemplateComplete(window.name);
