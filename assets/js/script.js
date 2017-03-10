@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
     var interactive = location.search.split('interactive=')[1] ? location.search.split('interactive=')[1] : '0';
-    alert(interactive);
+    //alert(interactive);
     if(interactive == 1){
         //alert("setMenuActive('menuItem2')");
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
