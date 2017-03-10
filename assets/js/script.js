@@ -63,13 +63,13 @@ jQuery(document).ready(function ($) {
     $('.next-button__last').bind('touchstart', function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main');
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
         });
 
     $('.next-button__last').mousedown(function(e){
         e.preventDefault();
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
-        window.external.playNextContentStartsNameInChannel('umfrage', 'main');
+        window.external.playNextContentStartsNameInChannel('umfrage', 'main', false, true);
         });
     
     function csrfSafeMethod(method) {
