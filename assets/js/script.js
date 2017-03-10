@@ -1,10 +1,13 @@
 jQuery(document).ready(function ($) {
     var interactive = location.search.split('interactive=')[1] ? location.search.split('interactive=')[1] : '0';
+    var interval = 120000;
     if(interactive == 1){
         //alert("setMenuActive('menuItem2')");
+        interval = 120000
         window.external.callMethodInChannelFramesByName("navi", "setMenuActive('menuItem2')");
     } else {
-        //alert("resetAll()");        
+        //alert("resetAll()");
+        interval = 30000;        
         window.external.callMethodInChannelFramesByName("navi", "resetAll()");
     }
 });
@@ -191,7 +194,7 @@ statChangedSecceed = function (){
 timeout = window.setTimeout(function(){
     window.external.callMethodInChannelFramesByName("navi", "resetAll()");
     window.external.HTMLTemplateComplete(window.name);
-}, 30000);
+}, interval);
 
 
 $('body').bind('touchstart', function(){
