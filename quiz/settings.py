@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questions',
     'nested_inline',
+    'mod_wsgi.server',
 ]
 
 
