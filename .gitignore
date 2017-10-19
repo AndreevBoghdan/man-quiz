@@ -1,4 +1,4 @@
-*.sqlite
+
 *.pyc
 *.pyo
 *.swp

@@ -98,7 +98,7 @@ jQuery(document).ready(function ($) {
             var answerNumber = $(this).attr('number');
 
             if ($(this).attr('value')==chosen.attr('value')){
-                var ajaxUrl = "http://h1475695.stratoserver.net" + $('#' + question + '_answer-' + answer + '-url').val();
+                var ajaxUrl = "http://manquiz.memedia.de:8000" + $('#' + question + '_answer-' + answer + '-url').val();
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
                 $.ajax({
                     type: "POST",
@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
             var answerNumber = $(this).attr('number');
 
             if ($(this).attr('value')==chosen.attr('value')){
-                var ajaxUrl = "http://h1475695.stratoserver.net" + $('#' + question + '_answer-' + answer + '-url').val();
+                var ajaxUrl = "http://manquiz.memedia.de:8000" + $('#' + question + '_answer-' + answer + '-url').val();
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
                 $.ajax({
                     type: "POST",

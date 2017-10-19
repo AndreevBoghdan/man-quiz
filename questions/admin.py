@@ -12,7 +12,7 @@ import signals
 
 # Register your models here.
 
-domain = 'http://h1475695.stratoserver.net'
+domain = 'http://manquiz.memedia.de:8000'
 
 class AnswerInline(NestedStackedInline):
     model = Answer
